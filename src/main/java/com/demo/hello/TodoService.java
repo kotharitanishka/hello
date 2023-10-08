@@ -24,17 +24,16 @@ public class TodoService {
         return todoRepository.findById(id);
     }
 
-    // // Update todo
-    // public Todo updateUser(Long id, Todo userDetails) {
-    //     Optional<Todo> todo = todoRepository.findById(id);
-    //     if (todo.isPresent()) {
-    //         Todo existingUser = todo.get();
-    //         existingUser.setName(userDetails.getName());
-    //         existingUser.setEmail(userDetails.getEmail());
-    //         return todoRepository.save(existingUser);
-    //     }
-    //     return null;
-    // }
+    // Update todo
+    public Todo updateTodo(Long id, Todo t) {
+        Optional<Todo> todo = todoRepository.findById(id);
+        if (todo.isPresent()) {
+            Todo existingTodo = todo.get();
+            existingTodo.setComp(t.getComp());
+            return todoRepository.save(existingTodo);
+        }
+        return null;
+    }
 
     // Delete all users
     public void deleteAllTodos() {

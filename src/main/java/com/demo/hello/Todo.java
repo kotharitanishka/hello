@@ -1,4 +1,6 @@
 package com.demo.hello;
+import java.time.LocalDate;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -9,8 +11,7 @@ public class Todo {
     private Long id;
     private String title;
     private String description;
-    private String created_at;
-    private String due_date;
+    private LocalDate due_date;
     private Boolean completed;
 
     // Constructors, Getters, and Setters
@@ -37,19 +38,14 @@ public class Todo {
     public void setDesc(String d) {
         this.description = d;
     }
-     public String getCreated() {
-        return created_at;
-    }
 
-    public void setCreated(String c) {
-        this.created_at = c;
-    }
      public String getDue() {
-        return due_date;
+        return due_date.toString();
     }
 
     public void setDue(String due) {
-        this.due_date = due;
+        CharSequence s = due;
+        this.due_date = LocalDate.parse(s);
     }
      public Boolean getComp() {
         return completed;
